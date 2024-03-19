@@ -1,5 +1,12 @@
 # Evaluation 2 SQL
 
+## Table des matières
+
+1. [Création de la base de données et alimentation](#installation)
+2. [Conception](#conception)
+3. [Référence](#référence)
+
+
 ## 1. Cloner le projet GITHUB
 Pour commencer veuillez cloner ce git contenant le readme, schema.sql, data.sql et queries.sql :
 
