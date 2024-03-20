@@ -1,5 +1,6 @@
 -- Active: 1698408179226@@127.0.0.1@3306@cinemasql
 -- DROP -----------------------------------------------------
+DELETE FROM seance_has_tarif;
 DELETE FROM seance;
 DELETE FROM Crenau;
 DELETE FROM Film_has_Genre;
@@ -89,8 +90,8 @@ INSERT INTO `cinemasql`.`Acteur` (Personne_id) VALUES (12);
 INSERT INTO `cinemasql`.`Acteur` (Personne_id) VALUES (13);
 
 -- FILMS -----------------------------------------------------
-INSERT INTO `cinemasql`.`Film` (`Titre`, `Date_sortie`, `Synopsis`, `Avant-Premiere`, ` Duree_d'exploitation`, `Duree`, `Réalisateur_id`, `LimiteAge_id`, `Commentaire_additionnel`, `Tarif_id`) VALUES ('Jurassic Park', '1993-06-09', 'Des dinosaures génétiquement modifiés sèment la terreur dans un parc d’attractions.', 0, 8, '2h07', 1, 2, 'Le film a été un énorme succès commercial et a remporté de nombreux prix.', 2);
-INSERT INTO `cinemasql`.`Film` (`Titre`, `Date_sortie`, `Synopsis`, `Avant-Premiere`, ` Duree_d'exploitation`, `Duree`, `Réalisateur_id`, `LimiteAge_id`, `Commentaire_additionnel`, `Tarif_id`) VALUES ('Star Wars', '1977-05-25', 'Dans une galaxie lointaine, très lointaine, un groupe de rebelles combat l’Empire.', 0, 8, '2h01', 2, 2, 'Le film a été un énorme succès commercial et a remporté de nombreux prix.', 2);
+INSERT INTO `cinemasql`.`Film` (`Titre`, `Date_sortie`, `Synopsis`, `Avant-Premiere`, `Duree_d'exploitation`, `Duree(min)`, `Réalisateur_id`, `LimiteAge_id`, `Commentaire`) VALUES ('Jurassic Park', '1993', 'Des dinosaures génétiquement modifiés sèment la terreur dans un parc d’attractions.', 0, 8, '125', 1, 2, 'Le film a été un énorme succès commercial et a remporté de nombreux prix.');
+INSERT INTO `cinemasql`.`Film` (`Titre`, `Date_sortie`, `Synopsis`, `Avant-Premiere`, `Duree_d'exploitation`, `Duree(min)`, `Réalisateur_id`, `LimiteAge_id`, `Commentaire`) VALUES ('Star Wars', '1977', 'Dans une galaxie lointaine, très lointaine, un groupe de rebelles combat l’Empire.', 0, 8, '121', 2, 2, 'Le film a été un énorme succès commercial et a remporté de nombreux prix.');
 
 -- FILM_HAS_ACTEUR -----------------------------------------------------
 INSERT INTO `cinemasql`.`Film_has_Acteur` (`Film_id`, `Acteur_id`) VALUES (1, 1);
@@ -112,7 +113,7 @@ INSERT INTO `cinemasql`.`Crenau` (`Date`, `Heure`) VALUES ('2024-02-25', '18:15'
 INSERT INTO `cinemasql`.`Crenau` (`Date`, `Heure`) VALUES ('2024-02-25', '20:00');
 INSERT INTO `cinemasql`.`Crenau` (`Date`, `Heure`) VALUES ('2024-02-25', '22:00');
 
--- PLAN_SEANCE -----------------------------------------------------
+-- SEANCE -----------------------------------------------------
 INSERT INTO `cinemasql`.`seance` (`Crenau_id`, `Film_id`, `Salle_id`, `Langue_id`) VALUES (1, 1, 1, 1);
 INSERT INTO `cinemasql`.`seance` (`Crenau_id`, `Film_id`, `Salle_id`, `Langue_id`) VALUES (2, 1, 1, 1);
 INSERT INTO `cinemasql`.`seance` (`Crenau_id`, `Film_id`, `Salle_id`, `Langue_id`) VALUES (3, 1, 1, 1);
@@ -128,6 +129,30 @@ INSERT INTO `cinemasql`.`seance` (`Crenau_id`, `Film_id`, `Salle_id`, `Langue_id
 INSERT INTO `cinemasql`.`seance` (`Crenau_id`, `Film_id`, `Salle_id`, `Langue_id`) VALUES (8, 1, 3, 1);
 INSERT INTO `cinemasql`.`seance` (`Crenau_id`, `Film_id`, `Salle_id`, `Langue_id`) VALUES (9, 1, 3, 1);
 INSERT INTO `cinemasql`.`seance` (`Crenau_id`, `Film_id`, `Salle_id`, `Langue_id`) VALUES (10, 1, 3, 1);
+
+-- SEANCE_HAS_TARIF ---------------------------------------------------
+INSERT INTO `cinemasql`.`seance_has_tarif` (`Seance_id`, `Tarif_id`) VALUES (1, 1);
+INSERT INTO `cinemasql`.`seance_has_tarif` (`Seance_id`, `Tarif_id`) VALUES (2, 1);
+INSERT INTO `cinemasql`.`seance_has_tarif` (`Seance_id`, `Tarif_id`) VALUES (3, 1);
+INSERT INTO `cinemasql`.`seance_has_tarif` (`Seance_id`, `Tarif_id`) VALUES (4, 1);
+INSERT INTO `cinemasql`.`seance_has_tarif` (`Seance_id`, `Tarif_id`) VALUES (5, 1);
+INSERT INTO `cinemasql`.`seance_has_tarif` (`Seance_id`, `Tarif_id`) VALUES (6, 1);
+INSERT INTO `cinemasql`.`seance_has_tarif` (`Seance_id`, `Tarif_id`) VALUES (7, 1);
+INSERT INTO `cinemasql`.`seance_has_tarif` (`Seance_id`, `Tarif_id`) VALUES (8, 1);
+INSERT INTO `cinemasql`.`seance_has_tarif` (`Seance_id`, `Tarif_id`) VALUES (9, 1);
+INSERT INTO `cinemasql`.`seance_has_tarif` (`Seance_id`, `Tarif_id`) VALUES (10, 1);
+
+-- BILLET -----------------------------------------------------
+
+INSERT INTO `cinemasql`.`Billet` (`Seance_id`) VALUES (1);
+INSERT INTO `cinemasql`.`Billet` (`Seance_id`) VALUES (2);
+INSERT INTO `cinemasql`.`Billet` (`Seance_id`) VALUES (3);
+INSERT INTO `cinemasql`.`Billet` (`Seance_id`) VALUES (4);
+INSERT INTO `cinemasql`.`Billet` (`Seance_id`) VALUES (5);
+INSERT INTO `cinemasql`.`Billet` (`Seance_id`) VALUES (6);
+INSERT INTO `cinemasql`.`Billet` (`Seance_id`) VALUES (7);
+
+
 
 
 

@@ -1,5 +1,6 @@
 -- Active: 1698408179226@@127.0.0.1@3306@cinemasql
 DROP TABLE IF EXISTS `cinemasql`.`billet`;
+DROP TABLE IF EXISTS `cinemasql`.`Seance_has_Tarif` ;
 DROP TABLE IF EXISTS `cinemasql`.`seance` ;
 DROP TABLE IF EXISTS `cinemasql`.`crenau` ;
 DROP TABLE IF EXISTS `cinemasql`.`film_has_genre` ;
@@ -14,10 +15,10 @@ DROP TABLE IF EXISTS `cinemasql`.`genre` ;
 DROP TABLE IF EXISTS `cinemasql`.`langue` ;
 DROP TABLE IF EXISTS `cinemasql`.`salle` ;
 
-
 -- -----------------------------------------------------
 -- Table `cinemasql`.`Salle`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Salle` ;
 
 CREATE TABLE IF NOT EXISTS `cinemasql`.`Salle` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -29,6 +30,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `cinemasql`.`Langue`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Langue` ;
 
 CREATE TABLE IF NOT EXISTS `cinemasql`.`Langue` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -40,6 +42,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `cinemasql`.`Personne`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Personne` ;
 
 CREATE TABLE IF NOT EXISTS `cinemasql`.`Personne` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -52,6 +55,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `cinemasql`.`Realisateur`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Realisateur` ;
 
 CREATE TABLE IF NOT EXISTS `cinemasql`.`Realisateur` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -69,6 +73,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `cinemasql`.`LimiteAge`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`LimiteAge` ;
 
 CREATE TABLE IF NOT EXISTS `cinemasql`.`LimiteAge` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -79,37 +84,24 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `cinemasql`.`Tarif`
--- -----------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS `cinemasql`.`Tarif` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `Intitule` VARCHAR(45) NOT NULL,
-  `Prix` DOUBLE NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `cinemasql`.`Film`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Film` ;
 
 CREATE TABLE IF NOT EXISTS `cinemasql`.`Film` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Titre` VARCHAR(100) NOT NULL,
-  `Duree` VARCHAR(45) NOT NULL,
-  `Date_sortie` DATE NOT NULL,
+  `Duree(Min)` INT NOT NULL,
+  `Date_sortie` INT NOT NULL,
   `Synopsis` LONGTEXT NOT NULL,
-  `Commentaire_additionnel` MEDIUMTEXT NULL,
+  `Commentaire` MEDIUMTEXT NULL,
   `Avant-Premiere` TINYINT NOT NULL,
-  ` Duree_d'exploitation` INT NOT NULL DEFAULT 8,
+  `Duree_d'exploitation` INT NOT NULL DEFAULT 8,
   `Réalisateur_id` INT NOT NULL,
   `LimiteAge_id` INT NOT NULL,
-  `Tarif_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Film_Réalisateur1_idx` (`Réalisateur_id` ASC) VISIBLE,
   INDEX `fk_Film_LimiteAge1_idx` (`LimiteAge_id` ASC) VISIBLE,
-  INDEX `fk_Film_Tarif1_idx` (`Tarif_id` ASC) VISIBLE,
   CONSTRAINT `fk_Film_Réalisateur1`
     FOREIGN KEY (`Réalisateur_id`)
     REFERENCES `cinemasql`.`Realisateur` (`id`)
@@ -119,11 +111,6 @@ CREATE TABLE IF NOT EXISTS `cinemasql`.`Film` (
     FOREIGN KEY (`LimiteAge_id`)
     REFERENCES `cinemasql`.`LimiteAge` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Film_Tarif1`
-    FOREIGN KEY (`Tarif_id`)
-    REFERENCES `cinemasql`.`Tarif` (`id`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -131,6 +118,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `cinemasql`.`Crenau`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Crenau` ;
 
 CREATE TABLE IF NOT EXISTS `cinemasql`.`Crenau` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -143,6 +131,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `cinemasql`.`Seance`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Seance` ;
 
 CREATE TABLE IF NOT EXISTS `cinemasql`.`Seance` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -179,8 +168,22 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `cinemasql`.`Tarif`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Tarif` ;
+
+CREATE TABLE IF NOT EXISTS `cinemasql`.`Tarif` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `Intitule` VARCHAR(45) NOT NULL,
+  `Prix` DOUBLE NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `cinemasql`.`Acteur`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Acteur` ;
 
 CREATE TABLE IF NOT EXISTS `cinemasql`.`Acteur` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -198,6 +201,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `cinemasql`.`Genre`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Genre` ;
 
 CREATE TABLE IF NOT EXISTS `cinemasql`.`Genre` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -209,6 +213,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `cinemasql`.`Film_has_Genre`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Film_has_Genre` ;
 
 CREATE TABLE IF NOT EXISTS `cinemasql`.`Film_has_Genre` (
   `Film_id` INT NOT NULL,
@@ -231,30 +236,17 @@ ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `cinemasql`.`Billet`
--- ----------------------------------------------------
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Billet` ;
 
 CREATE TABLE IF NOT EXISTS `cinemasql`.`Billet` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `Tarif_id` INT NOT NULL,
   `Seance_id` INT NOT NULL,
-  `Salle_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `Tarif_id`, `Seance_id`, `Salle_id`),
-  INDEX `fk_Billet_Tarif1_idx` (`Tarif_id` ASC) VISIBLE,
+  PRIMARY KEY (`id`, `Seance_id`),
   INDEX `fk_Billet_Seance1_idx` (`Seance_id` ASC) VISIBLE,
-  INDEX `fk_Billet_Salle1_idx` (`Salle_id` ASC) VISIBLE,
-  CONSTRAINT `fk_Billet_Tarif1`
-    FOREIGN KEY (`Tarif_id`)
-    REFERENCES `cinemasql`.`Tarif` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_Billet_Seance1`
     FOREIGN KEY (`Seance_id`)
     REFERENCES `cinemasql`.`Seance` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Billet_Salle1`
-    FOREIGN KEY (`Salle_id`)
-    REFERENCES `cinemasql`.`Salle` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -263,6 +255,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `cinemasql`.`Film_has_Acteur`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Film_has_Acteur` ;
 
 CREATE TABLE IF NOT EXISTS `cinemasql`.`Film_has_Acteur` (
   `Film_id` INT NOT NULL,
@@ -282,3 +275,26 @@ CREATE TABLE IF NOT EXISTS `cinemasql`.`Film_has_Acteur` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `cinemasql`.`Seance_has_Tarif`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `cinemasql`.`Seance_has_Tarif` ;
+
+CREATE TABLE IF NOT EXISTS `cinemasql`.`Seance_has_Tarif` (
+  `Seance_id` INT NOT NULL,
+  `Tarif_id` INT NOT NULL,
+  PRIMARY KEY (`Seance_id`, `Tarif_id`),
+  INDEX `fk_Seance_has_Tarif_Tarif1_idx` (`Tarif_id` ASC) VISIBLE,
+  INDEX `fk_Seance_has_Tarif_Seance1_idx` (`Seance_id` ASC) VISIBLE,
+  CONSTRAINT `fk_Seance_has_Tarif_Seance1`
+    FOREIGN KEY (`Seance_id`)
+    REFERENCES `cinemasql`.`Seance` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Seance_has_Tarif_Tarif1`
+    FOREIGN KEY (`Tarif_id`)
+    REFERENCES `cinemasql`.`Tarif` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
