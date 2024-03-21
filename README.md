@@ -38,7 +38,7 @@ mysql -u username -p database_name < queries.sql
 
 ## Digramme MySQL WorkBench
 
-![MCD](mcd.png)
+![MCD](/MCD.png)
 
 
 ## Remarque
