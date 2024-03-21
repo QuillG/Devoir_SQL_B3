@@ -41,12 +41,12 @@ mysql -u username -p database_name < queries.sql
 ![MCD](/MCD.png)
 
 
-## Remarque
+# Remarque
 
-# 1. Impossible de charger le CSV
+## 1. Impossible de charger le CSV
 Après plusieurs essais, je n'ai pas réussi à importer le CSV, j'ai donc inséré les données à la main. L'erreur rencontrée était un problème de 'secure_file_priv'
 
-# 2. Création des premières VIEWS
+## 2. Création des premières VIEWS
 Dans la création des premières VIEWS, il m'a été impossible d'ORDER BY sur mes valeurs Matin, Apres-midi1 etc... J'arrive à les trier alphabétiquement, mais pas dans l'ordre que je veux.     
 
 
