@@ -25,13 +25,13 @@ mysql -u username -p < schema.sql
 ## 3. Insertion du jeux de données
 
 ```bash
-mysql -u username -p database_name < data.sql
+mysql -u username -p cinemasql < data.sql
 ```
 
 ## 4. Insertion des Queries des exercices 
 
 ```bash
-mysql -u username -p database_name < queries.sql
+mysql -u username -p cinemasql < queries.sql
 ```
 
 # Conception
