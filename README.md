@@ -4,7 +4,7 @@
 
 1. [Création de la base de données et alimentation](#installation)
 2. [Conception](#conception)
-3. [Référence](#référence)
+3. [Référence](#remarque)
 
 # Installation
 
