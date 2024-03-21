@@ -90,8 +90,8 @@ INSERT INTO `cinemasql`.`Acteur` (Personne_id) VALUES (12);
 INSERT INTO `cinemasql`.`Acteur` (Personne_id) VALUES (13);
 
 -- FILMS -----------------------------------------------------
-INSERT INTO `cinemasql`.`Film` (`Titre`, `Date_sortie`, `Synopsis`, `Avant-Premiere`, `Duree_d'exploitation`, `Duree(min)`, `Réalisateur_id`, `LimiteAge_id`, `Commentaire`) VALUES ('Jurassic Park', '1993', 'Des dinosaures génétiquement modifiés sèment la terreur dans un parc d’attractions.', 0, 8, '125', 1, 2, 'Le film a été un énorme succès commercial et a remporté de nombreux prix.');
-INSERT INTO `cinemasql`.`Film` (`Titre`, `Date_sortie`, `Synopsis`, `Avant-Premiere`, `Duree_d'exploitation`, `Duree(min)`, `Réalisateur_id`, `LimiteAge_id`, `Commentaire`) VALUES ('Star Wars', '1977', 'Dans une galaxie lointaine, très lointaine, un groupe de rebelles combat l’Empire.', 0, 8, '121', 2, 2, 'Le film a été un énorme succès commercial et a remporté de nombreux prix.');
+INSERT INTO `cinemasql`.`Film` (`Titre`, `Date_sortie`, `Synopsis`, `Avant-Premiere`, `Duree_d'exploitation`, `Duree(min)`, `Realisateur_id`, `LimiteAge_id`, `Commentaire`) VALUES ('Jurassic Park', '1993', 'Des dinosaures génétiquement modifiés sèment la terreur dans un parc d’attractions.', 0, 8, '125', 1, 2, 'Le film a été un énorme succès commercial et a remporté de nombreux prix.');
+INSERT INTO `cinemasql`.`Film` (`Titre`, `Date_sortie`, `Synopsis`, `Avant-Premiere`, `Duree_d'exploitation`, `Duree(min)`, `Realisateur_id`, `LimiteAge_id`, `Commentaire`) VALUES ('Star Wars', '1977', 'Dans une galaxie lointaine, très lointaine, un groupe de rebelles combat l’Empire.', 0, 8, '121', 2, 2, 'Le film a été un énorme succès commercial et a remporté de nombreux prix.');
 
 -- FILM_HAS_ACTEUR -----------------------------------------------------
 INSERT INTO `cinemasql`.`Film_has_Acteur` (`Film_id`, `Acteur_id`) VALUES (1, 1);
